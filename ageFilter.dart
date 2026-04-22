@@ -2,20 +2,19 @@ import 'dart:io';
 
 void main(){
   print("Enter your age");
-  var userInput = stdin.readLineSync();
-  var userAge = int.parse(userInput??"0");
 
-  if(userAge < 13){
-    print("Welcome to KidZone!");
+  int userAge = int.tryParse(stdin.readLineSync() ?? "") ?? -1;
+
+  if(userAge < 0){
+    print("Invalid age. Please enter a positive number");
   }
-  else if(userAge >= 13 && userAge <= 17){
-    print("Welcome to Teen Hub!");
+  else if(userAge < 13){
+    print("Welcome to kidZone!");
   }
-  else if(userAge >= 18){
-    print("Welcome, Adult");
+  else if(userAge <= 17){
+    print("Welcome to Teen Hub");
   }
   else{
-    print("Welcome to KidZone!");
+    print("Welcome, Adult!");
   }
-
 }

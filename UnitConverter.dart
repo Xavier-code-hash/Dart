@@ -1,15 +1,28 @@
+import 'dart:io';
+
 void main(){
-    // Temperature in degrees celsius to temperatures in fahrenheit
-    double celsius = 25.0;
-    final fahrenheit = (celsius * 9/5) + 32;
+  print("Enter temperature in celsius");
+  double celsius = double.tryParse(stdin.readLineSync()??"0")??0.0;
 
-    // Converstion of kilometers to miles
+  print("Enter distance in kilometers");
+  double kilometer = double.tryParse(stdin.readLineSync()??"0")??0.0;
 
-    const miles = 0.62137;
-    int kilometerDistance = 10;
-    final milesDistance = miles * kilometerDistance;
+  print("Convert to imperial?(yes/no)");
+  String choice = (stdin.readLineSync()??"no").toLowerCase();
+          bool isMetric = (choice != "yes");
 
-    bool isMetric = true;
-    print("The metric $isMetric being used for temperature is $fahrenheit while that of distance is $milesDistance");
+          const double kilometerToMiles = 0.621371;
+          if(!isMetric){
+            double fahrenheit = (celsius * 9/5) + 32;
+            double miles = kilometer * kilometerToMiles;
 
+            print("\n[Imperial System Active]");
+            print("Temperature: ${fahrenheit.toStringAsFixed(1)} F");
+            print("Distance: ${miles.toStringAsFixed(2)} miles");
+          }
+          else{
+            print("\n[Metric System Active]");
+            print("temperature: ${celsius.toStringAsFixed(1)} C");
+            print("Distance: ${kilometer.toStringAsFixed(2)} km");
+          }
 }

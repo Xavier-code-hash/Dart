@@ -1,12 +1,19 @@
+
+import 'dart:io';
+
 void main(){
-  String lightColour = "red";
+  print("Enter the traffic color");
+
+  String lightColour = stdin.readLineSync() ?? "";
   
-  switch (lightColour){
-    case "Red":
+  switch (lightColour.toLowerCase().trim()){
+    case "red":
     print("Stop!");
-    case "Yellow":
+    break;
+    case "yellow":
     print("Prepare to Stop");
-    case "Green":
+    break;
+    case "green":
     print("Go");
     break;
     default:
